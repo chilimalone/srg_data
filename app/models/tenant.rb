@@ -1,4 +1,8 @@
 class Tenant < ActiveRecord::Base
-  belongs_to :building
-  attr_accessible :comments, :contactInfo, :name, :room
-end
+  attr_accessible :Leased_Signed, :Leased_Expired
+
+  belongs_to :room
+  belongs_to :property, through :room
+  belongs_to :individual
+    
+  end
