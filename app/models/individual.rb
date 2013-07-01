@@ -6,4 +6,6 @@ class Individual < ActiveRecord::Base
   has_many :clients
   has_many :sales
   has_many :tenants
+  has_many :property
+  has_many :sales
 end
