@@ -1,8 +1,8 @@
 class Tour < ActiveRecord::Base
-  # attr_accessible :title, :body
-  attr_accessible :date, :room_number, :comment,
-  belongs_to :property, through :room
-  belongs_to :room
-  belongs_to :agent_id
+  
+  attr_accessible :date, :room_number, :comment
+
+  belongs_to :property
+  belongs_to :agent
   belongs_to :client
 end

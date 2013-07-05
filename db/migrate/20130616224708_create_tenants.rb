@@ -1,14 +1,12 @@
 class CreateTenants < ActiveRecord::Migration
   def change
     create_table :tenants do |t|
-      t.string :name
-      t.string :room
-      t.string :contactInfo
-      t.text :comments
-      t.references :building
-
+      t.date :leased_signed
+      t.date :lease_expired
       t.timestamps
     end
-    add_index :tenants, :building_id
+    add_index :tenants
+    add_reference :tenants, :room, index: true
+    add_reference :tenants, :individual, index: true
   end
 end
