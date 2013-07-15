@@ -15,8 +15,8 @@ class CreateLeases < ActiveRecord::Migration
     end
 
     add_index :leases, :building_id
-    add_column :leases, :rental_amount, :decimal, precision: 2
-    add_column :leases, :referal_amount, :decimal, precision: 2
+    add_column :leases, :rental_amount, :decimal, :precision => 2
+    add_column :leases, :referal_amount, :decimal, :precision => 2
     add_index :leases, :property_id
     add_index :leases, :agent_id
   end

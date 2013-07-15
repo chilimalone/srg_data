@@ -4,12 +4,12 @@ class CreateTours < ActiveRecord::Migration
       t.date :date
       t.integer :room_number
       t.text :comment
+      t.references :agent
+      t.references :client
+      t.references :property
 
       t.timestamps
     end
-    add_reference :tours, :agent, index: true
-    add_index :tours
-    add_reference :tours, :client, index: true
-    add_reference :tours, :property
+    add_index :tours, :agent_id
   end
 end

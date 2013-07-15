@@ -4,9 +4,8 @@ class CreateTenants < ActiveRecord::Migration
       t.date :leased_signed
       t.date :lease_expired
       t.timestamps
+      t.references :room
+      t.references :individual
     end
-    add_index :tenants
-    add_reference :tenants, :room, index: true
-    add_reference :tenants, :individual, index: true
   end
 end

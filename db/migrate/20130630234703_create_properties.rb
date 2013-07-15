@@ -7,11 +7,10 @@ class CreateProperties < ActiveRecord::Migration
       t.string :state
       t.string :zip
       t.text :comments
+      t.references :individual
+      t.references :agent
 
       t.timestamps
     end
-    add_index :properties
-    add_reference :properties, :individual, index: true
-    add_reference :properties, :agent, index: true
   end
 end

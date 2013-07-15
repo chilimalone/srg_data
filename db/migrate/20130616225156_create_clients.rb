@@ -8,11 +8,10 @@ class CreateClients < ActiveRecord::Migration
       t.date :date_received
       t.boolean :confirmed
       t.text :client_comments
+      t.references :individual
 
       t.timestamps
     end
-    add_column :clients, :price, :decimal, precision: 2
-    add_index :clients
-    add_reference :clients, :individual, index: true
+    add_column :clients, :price, :decimal, :precision => 2
   end
 end

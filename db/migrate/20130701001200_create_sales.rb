@@ -6,11 +6,10 @@ class CreateSales < ActiveRecord::Migration
       t.date :closing_date
       t.string :company
       t.string :office_number
+      t.references :buyer
+      t.references :agent
 
       t.timestamps
     end
-    add_index :sales
-    add_references :sales, :buyer, index: true
-    add_references :sales, :agent, index: true
   end
 end

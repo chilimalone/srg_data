@@ -1,7 +1,9 @@
 Srg::Application.routes.draw do
-  resources :owners do
-    resources :buildings
-  end
+#  get "vim/app/controllers/owners_controller.rb"
+
+#  resources :owners do
+#    resources :buildings
+#  end
 
 
   # The priority is based upon order of creation:

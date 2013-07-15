@@ -4,8 +4,7 @@ class Property < ActiveRecord::Base
 
   belongs_to :individual
   belongs_to :agent
-  has_many :room
-  has_many :tenants, through :room
+  has_many :rooms
   has_many :leases
   has_many :sales
 end

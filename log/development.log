@@ -47,3 +47,227 @@ Connecting to database specified by database.yml
 Connecting to database specified by database.yml
 Connecting to database specified by database.yml
 Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTenants (20130616224708)
+  [1m[35m (0.3ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTenants (20130616224708)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "tenants" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "leased_signed" date, "lease_expired" date, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTenants (20130616224708)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "tenants" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "leased_signed" date, "lease_expired" date, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTenants (20130616224708)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "tenants" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "leased_signed" date, "lease_expired" date, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (6.6ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTenants (20130616224708)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "tenants" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "leased_signed" date, "lease_expired" date, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "room_id" integer, "individual_id" integer) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130616224708')[0m
+  [1m[35m (7.2ms)[0m  commit transaction
+Migrating to CreateLeases (20130616224956)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTenants (20130616224708)
+Migrating to CreateLeases (20130616224956)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "leases" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "building_id" integer, "property_id" integer, "agent_id" integer, "move_out" date, "move_in" date, "welcome_home" boolean, "thank_you_sent" boolean, "dropped_date" date, "comment" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_leases_on_building_id" ON "leases" ("building_id")[0m
+  [1m[35m (7.5ms)[0m  ALTER TABLE "leases" ADD "rental_amount" decimal(2)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "leases" ADD "referal_amount" decimal(2)[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_leases_on_property_id" ON "leases" ("property_id")
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_leases_on_agent_id" ON "leases" ("agent_id")[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130616224956')
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Migrating to CreateClients (20130616225156)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTenants (20130616224708)
+Migrating to CreateLeases (20130616224956)
+Migrating to CreateClients (20130616225156)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "clients" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "comments" text, "file_number" varchar(255), "source" text, "company" varchar(255), "date_received" date, "confirmed" boolean, "client_comments" text, "individual_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "clients" ADD "price" decimal(2)[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130616225156')
+  [1m[36m (7.7ms)[0m  [1mcommit transaction[0m
+Migrating to CreateIndividuals (20130630222353)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TABLE "individuals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "fname" varchar(255), "lname" varchar(255), "phone" varchar(255), "street_1" varchar(255), "string_2" varchar(255), "city" varchar(255), "state" varchar(255), "zip" varchar(255), "email" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.5ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTenants (20130616224708)
+Migrating to CreateLeases (20130616224956)
+Migrating to CreateClients (20130616225156)
+Migrating to CreateIndividuals (20130630222353)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "individuals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "fname" varchar(255), "lname" varchar(255), "phone" varchar(255), "street_1" varchar(255), "string_2" varchar(255), "city" varchar(255), "state" varchar(255), "zip" varchar(255), "email" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130630222353')[0m
+  [1m[35m (7.1ms)[0m  commit transaction
+Migrating to CreateRooms (20130630234053)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTenants (20130616224708)
+Migrating to CreateLeases (20130616224956)
+Migrating to CreateClients (20130616225156)
+Migrating to CreateIndividuals (20130630222353)
+Migrating to CreateRooms (20130630234053)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "rooms" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "room_number" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (6.4ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTenants (20130616224708)
+Migrating to CreateLeases (20130616224956)
+Migrating to CreateClients (20130616225156)
+Migrating to CreateIndividuals (20130630222353)
+Migrating to CreateRooms (20130630234053)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "rooms" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "room_number" integer, "properties_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_rooms_on_room_number" ON "rooms" ("room_number")[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130630234053')
+  [1m[36m (7.2ms)[0m  [1mcommit transaction[0m
+Migrating to CreateProperties (20130630234703)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTenants (20130616224708)
+Migrating to CreateLeases (20130616224956)
+Migrating to CreateClients (20130616225156)
+Migrating to CreateIndividuals (20130630222353)
+Migrating to CreateRooms (20130630234053)
+Migrating to CreateProperties (20130630234703)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "properties" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "street_1" varchar(255), "street_2" varchar(255), "city" varchar(255), "state" varchar(255), "zip" varchar(255), "comments" text, "individual_id" integer, "agent_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130630234703')[0m
+  [1m[35m (7.5ms)[0m  commit transaction
+Migrating to CreateAgents (20130630235518)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "agents" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "fname" varchar(255), "lname" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTenants (20130616224708)
+Migrating to CreateLeases (20130616224956)
+Migrating to CreateClients (20130616225156)
+Migrating to CreateIndividuals (20130630222353)
+Migrating to CreateRooms (20130630234053)
+Migrating to CreateProperties (20130630234703)
+Migrating to CreateAgents (20130630235518)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "agents" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "fname" varchar(255), "lname" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130630235518')[0m
+  [1m[35m (6.9ms)[0m  commit transaction
+Migrating to CreateTours (20130630235947)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTenants (20130616224708)
+Migrating to CreateLeases (20130616224956)
+Migrating to CreateClients (20130616225156)
+Migrating to CreateIndividuals (20130630222353)
+Migrating to CreateRooms (20130630234053)
+Migrating to CreateProperties (20130630234703)
+Migrating to CreateAgents (20130630235518)
+Migrating to CreateTours (20130630235947)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "tours" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "date" date, "room_number" integer, "comment" text, "agent_id" integer, "client_id" integer, "property_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_tours_on_agent_id" ON "tours" ("agent_id")[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130630235947')
+  [1m[36m (7.1ms)[0m  [1mcommit transaction[0m
+Migrating to CreateSales (20130701001200)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTenants (20130616224708)
+Migrating to CreateLeases (20130616224956)
+Migrating to CreateClients (20130616225156)
+Migrating to CreateIndividuals (20130630222353)
+Migrating to CreateRooms (20130630234053)
+Migrating to CreateProperties (20130630234703)
+Migrating to CreateTours (20130630235947)
+Migrating to CreateSales (20130701001200)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "sales" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "buyer" varchar(255), "hear" boolean, "closing_date" date, "company" varchar(255), "office_number" varchar(255), "buyer_id" integer, "agent_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130701001200')[0m
+  [1m[35m (7.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTenants (20130616224708)
+Migrating to CreateLeases (20130616224956)
+Migrating to CreateClients (20130616225156)
+Migrating to CreateIndividuals (20130630222353)
+Migrating to CreateRooms (20130630234053)
+Migrating to CreateProperties (20130630234703)
+Migrating to CreateTours (20130630235947)
+Migrating to CreateSales (20130701001200)
+Migrating to RemoveAgentFromTours (20130709071437)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateTenants (20130616224708)
+Migrating to CreateLeases (20130616224956)
+Migrating to CreateClients (20130616225156)
+Migrating to CreateIndividuals (20130630222353)
+Migrating to CreateRooms (20130630234053)
+Migrating to CreateProperties (20130630234703)
+Migrating to CreateTours (20130630235947)
+Migrating to CreateSales (20130701001200)
+Migrating to RemoveAgentFromTours (20130709071437)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TEMPORARY TABLE "altered_tours" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "date" date, "room_number" integer, "comment" text, "agent_id" integer, "client_id" integer, "property_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "temp_index_altered_tours_on_agent_id" ON "altered_tours" ("agent_id")[0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "tours"
+  [1m[36m (7.5ms)[0m  [1mDROP TABLE "tours"[0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "tours" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "date" date, "room_number" integer, "comment" text, "client_id" integer, "property_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mSELECT * FROM "altered_tours"[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "altered_tours"
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130709071437')[0m
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
